@@ -1,16 +1,15 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    // Flutter Gradle plugin must come last
+    // Flutter Gradle Plugin must be applied after Android/Kotlin plugins
     id("dev.flutter.flutter-gradle-plugin")
 }
 
 android {
     namespace = "com.example.flashlight_app"
-    compileSdk = 34
+    compileSdk = 34   // set manually
 
-    // Force NDK version
-    ndkVersion = "27.0.12077973"
+    ndkVersion = "27.0.12077973" // force NDK version
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -23,9 +22,12 @@ android {
 
     defaultConfig {
         applicationId = "com.example.flashlight_app"
-        minSdk = 23       // ✅ FIXED (was minSdkVersion flutter.minSdkVersion)
+
+        // ✅ FIXED: correct Kotlin DSL syntax
+        minSdk = 23
         targetSdk = 34
-        versionCode = 1   // ✅ set manually (GitHub Actions will still package APK)
+
+        versionCode = 1
         versionName = "1.0.0"
     }
 
